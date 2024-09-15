@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/propertie")
 @SecurityRequirement(name = "bearer-key")
+@CrossOrigin(origins = "http://172.27.64.1:8082")
 public class EmailController {
     @Autowired
     private EmailService service;
