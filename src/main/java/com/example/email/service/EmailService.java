@@ -8,8 +8,6 @@ import com.example.email.model.DataEmailDTO;
 import com.example.email.model.EmailValidDTO;
 import com.example.email.repository.EmailRepository;
 import com.example.email.repository.UserValidRepository;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -43,13 +41,13 @@ public class EmailService {
         return new DataEmailDTO(email);
     }
     public DataEmailDTO sendEmail(DataEmailDTO dto) {
-            SimpleMailMessage message =new SimpleMailMessage();
-            message.setFrom(from);
-            message.setTo(dto.emailTo());
-            message.setSubject(dto.subject());
-            message.setText(dto.text());
-            mailSender.send(message);
-            return dto;
+        SimpleMailMessage message =new SimpleMailMessage();
+        message.setFrom(from);
+        message.setTo(dto.emailTo());
+        message.setSubject(dto.subject());
+        message.setText(dto.text());
+        mailSender.send(message);
+        return dto;
     }
     public DataEmailDTO sendEmailValid(EmailValidDTO dto) {
         var instant = Instant.now().plusMillis(900000L);
